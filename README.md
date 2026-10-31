@@ -18,3 +18,8 @@
 SHA-256：`5e53e9f15ac84226c86dbfb179345e15db2dffb157493e9e2f47fe4a529eccab`。
 
 本仓库不提交大型镜像二进制到 Git 历史；请使用 Release 附件。
+
+## 从源码复现
+
+仓库中的 Dockerfile、scripts/ 和报告均为构建材料；源代码和大文件在镜像内。
+若需要重新在线构建，请将官方指定 Commit 的完整 BoofCV checkout（含 .git、origin/SNAPSHOT 引用与 data 子模块）放到 source/BoofCV，再按 Dockerfile 的临时 CA secret 说明执行。具体复现限制见 reports/BUILD_REPORT.md。

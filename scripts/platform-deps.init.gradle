@@ -1,0 +1,19 @@
+gradle.projectsEvaluated {
+    def root = gradle.rootProject
+    root.tasks.register('collectPlatformDependencies') {
+        doLast {
+            def platform = root.findProperty('bundlePlatform') ?: 'linux-x86_64'
+            if (!(platform in ['linux-x86_64','windows-x86_64'])) throw new GradleException('Unsupported platform')
+            def modules = ['org.bytedeco:ffmpeg:8.1.2-1.5.14', 'org.bytedeco:opencv:4.14.0-1.5.14', 'org.bytedeco:openblas:0.3.34-1.5.14']
+            def deps = modules.collectMany { [root.dependencies.create(it), root.dependencies.create(it+':'+platform)] }
+            deps.add(root.dependencies.create('org.bytedeco:javacpp:1.5.14:'+platform))
+            def config = root.configurations.detachedConfiguration(*deps.toArray(new org.gradle.api.artifacts.Dependency[0]))
+            def target = new File('/opt/boofcv/platform-deps/'+platform)
+            target.mkdirs()
+            config.resolve().each { artifact ->
+                root.copy { from artifact; into target }
+                println('PLATFORM_ARTIFACT '+artifact.name)
+            }
+        }
+    }
+}

@@ -1,0 +1,4 @@
+bab0ed74339714d2418b9197ceb0e3591a2ecefe4f17c8b7ce40d1f4023eaf6f  boofcv-linux-amd64.tar.gz.part-00
+987b6e2fffb5a52412900d6d7cbe1e6b5aafc97f7676b1cdab82db54aee8e24b  boofcv-linux-amd64.tar.gz.part-01
+9322883ceb9a886c14e96dafe99f8997a31f21038d4cf4c0b3efb3dc6303e414  boofcv-linux-amd64.tar.gz.part-02
+5e53e9f15ac84226c86dbfb179345e15db2dffb157493e9e2f47fe4a529eccab  boofcv-linux-amd64.tar.gz
